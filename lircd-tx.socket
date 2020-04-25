@@ -1,0 +1,6 @@
+[Socket]
+ListenStream=/run/lirc/lircd-tx
+
+[Install]
+WantedBy=sockets.target
+Also=lircd-tx.service

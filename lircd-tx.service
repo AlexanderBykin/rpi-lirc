@@ -1,0 +1,26 @@
+[Unit]
+Documentation=man:lircd(8)
+Documentation=http://lirc.org/html/configure.html
+Description=Second lircd, the transmitter
+Wants=lircd-setup.service
+After=network.target lircd-setup.service lircd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/lircd --nodaemon -Dtrace2 --options-file /etc/lirc/lirc_tx_options.conf
+; User=lirc
+; Group=lirc
+
+; Hardening opts, see systemd.exec(5). Doesn't add much unless
+; not running as root.
+;
+; # Required for dropping privileges in --effective-user.
+; CapabilityBoundingSet=CAP_SETEUID
+; MemoryDenyWriteExecute=true
+; NoNewPrivileges=true
+; PrivateTmp=true
+; ProtectHome=true
+; ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

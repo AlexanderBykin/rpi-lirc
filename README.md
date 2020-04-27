@@ -15,6 +15,7 @@ dtoverlay=pwm-ir-tx,gpio_pin=18
 ### Instruction to wire
 - Your IR-receiver signal pin should be connected into GPIO-17
 - Your IR-transmitter should be connected into GPIO-18
+- [IR-led circuit](https://github.com/AlexanderShniperson/rpi-lirc/blob/master/led-circuit.png) and connection to Raspberry
 
 ### Testing
 - open first ssh terminal for Raspberry and run `journalctl -fu lircd`

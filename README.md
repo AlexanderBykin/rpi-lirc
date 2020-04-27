@@ -32,3 +32,6 @@ sudo apt install ./liblirc0_0.10.1-5.2_armhf.deb ./liblirc-client0_0.10.1-5.2_ar
 
 ### Inspect IR
 To check supported IR and enabled protocols run `sudo ir-keytable`, to enable all possible protocols run `sudo ir-keytable -p all -t -v`
+
+### Known issues
+- Send and Receive doesn't work from the same Raspberry device, in my case i tested with Raspberry Zero, but if we use two separate devices it works

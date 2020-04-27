@@ -8,7 +8,7 @@ Summary config LIRC as Transmitter and Receiver for Raspberry (Raspbian or DietP
 4) add two lines into `/boot/config.txt` or `/DietPi/config.txt`
 ```
 dtoverlay=gpio-ir,gpio_pin=17
-dtoverlay=gpio-ir-tx,gpio_pin=18
+dtoverlay=pwm-ir-tx,gpio_pin=18
 ```
 5) reboot
 
@@ -20,3 +20,14 @@ dtoverlay=gpio-ir-tx,gpio_pin=18
 - open first ssh terminal for Raspberry and run `journalctl -fu lircd`
 - open second ssh terminal for Raspberry and run `irsend --device=/var/run/lirc/lircd-tx SEND_ONCE TEST KEY_0`
 - success result you should see at your first ssh session
+
+### Patched LIRC
+In `lirc-patched` directory you can find already patched and builded LIRC [as it does here for 4.19 kernel](https://www.raspberrypi.org/forums/viewtopic.php?t=235256)
+```
+cd ./lirc-patched
+sudo apt remove lirc liblirc0 liblirc-client0
+sudo apt install ./liblirc0_0.10.1-5.2_armhf.deb ./liblirc-client0_0.10.1-5.2_armhf.deb ./lirc_0.10.1-5.2_armhf.deb
+```
+
+### Inspect IR
+To check supported IR and enabled protocols run `sudo ir-keytable`, to enable all possible protocols run `sudo ir-keytable -p all -t -v`
